@@ -10,6 +10,14 @@
     oraclepassword: "{{ lookup('env', 'ORACLE_PWD') }}"
 
   tasks:
+    - debug:
+        msg:
+          - "{{ oraclehost }}"
+          - "{{ oracleport }}"
+          - "{{ oracleservice }}"
+          - "{{ oracleuser }}"
+          - "{{ oraclemode }}"
+          - "{{ oraclepassword }}"
     - name: gather database facts
       oracle_facts:
         hostname: "{{ oraclehost }}"
