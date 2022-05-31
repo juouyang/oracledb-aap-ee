@@ -1,0 +1,23 @@
+- hosts: localhost
+  collections:
+  - ari_stark.ansible_oracle_modules
+  vars:
+    oraclehost: "{{ lookup('env', 'ORACLE_IP') }}"
+    oracleport: 1521
+    oracleservice: "{{ lookup('env', 'ORACLE_SID') }}"
+    oracleuser: sys
+    oraclemode: sysdba
+    oraclepassword: "{{ lookup('env', 'ORACLE_PWD') }}"
+
+  tasks:
+    - name: gather database facts
+      oracle_facts:
+        hostname: "{{ oraclehost }}"
+        port: "{{ oracleport }}"
+        service_name: "{{ oracleservice }}"
+        user: "{{ oracleuser }}"
+        mode: "{{ oraclemode }}"
+        password: "{{ oraclepassword }}"
+      register: dbfacts
+    - debug:
+        var: dbfacts
