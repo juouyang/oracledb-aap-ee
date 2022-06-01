@@ -1,1 +1,3 @@
-curl [platform:rpm compile]
+curl
+expect
+wget

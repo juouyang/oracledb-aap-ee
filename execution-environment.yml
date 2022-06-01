@@ -21,6 +21,10 @@ additional_build_steps:
     - COPY --from=docker.io/guywithnose/sqlplus:latest /usr/lib/libaio.so.1 /usr/lib/libaio.so.1
     - COPY --from=docker.io/guywithnose/sqlplus:latest /usr/lib/libaio.so.1.0.1 /usr/lib/libaio.so.1.0.1
     - COPY --from=docker.io/guywithnose/sqlplus:latest /usr/lib/libociei.so /usr/lib/libociei.so
+    - COPY --from=docker.io/juouyang/oracle-db:19.3.0-se2 /opt/oracle/product/19c/dbhome_1/suptools/oratop/oratop /usr/sbin/oratop
+    - COPY --from=docker.io/juouyang/oracle-db:19.3.0-se2 /opt/oracle/product/19c/dbhome_1/lib/libclntsh.so.19.1 /usr/lib/libclntsh.so.19.1
+    - COPY --from=docker.io/juouyang/oracle-db:19.3.0-se2 /opt/oracle/product/19c/dbhome_1/lib/libclntshcore.so.19.1 /usr/lib/libclntshcore.so.19.1
+    - COPY --from=docker.io/juouyang/oracle-db:19.3.0-se2 /opt/oracle/product/19c/dbhome_1/lib/libnnz19.so /usr/lib/libnnz19.so
     - ENV LD_LIBRARY_PATH="/usr/lib/:$LD_LIBRARY_PATH"
     - ENV ORACLE_HOME="/usr"
     - USER 1000
