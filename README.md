@@ -1,3 +1,26 @@
+## Preparations
+
+* container runtime: docker or podman
+* python packages:
+    ```
+    pip install ansible-builder
+    pip install ansible-runner # to verify container image of ee
+    ```
+
+Run Oracle Database 19.3.0 using Container
+```
+export VOLUME_ROOT=/Users/ju/oracle-db/oradata    # persistent data
+
+docker run -d \
+  --name oracle-db \
+  -p 1521:1521 \
+  -p 5500:5500 \
+  -e ORACLE_SID=ORCLCDB \
+  -e ORACLE_PWD=53916262 \
+  -v ${VOLUME_ROOT}:/opt/oracle/oradata \
+  juouyang/oracle-db:19.3.0-se2
+```
+
 ## Build
 
 docker
