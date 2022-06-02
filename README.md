@@ -69,11 +69,11 @@ docker run --rm -it \
 
 playbook
 ```
+# edit test/env/extravars
+
 docker run --rm -it \
     -v $(pwd)/test/project/test.yaml:/runner/project/test.yaml \
-    -e ORACLE_IP=${ORACLE_IP} \
-    -e ORACLE_PWD=${ORACLE_PWD} \
-    -e ORACLE_SID=${ORACLE_SID} \
+    -v $(pwd)/test/env/extravars:/runner/env/extravars \
     -e RUNNER_PLAYBOOK=test.yaml \
     juouyang/oracle-ee:0.0.3
 ```
@@ -81,7 +81,7 @@ docker run --rm -it \
 ansible-runner
 
 ```
-# edit test/env/envvars
+# edit test/env/extravars
 
 ansible-runner run \
     --process-isolation test \

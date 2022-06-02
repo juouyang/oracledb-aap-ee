@@ -10,6 +10,15 @@
     oraclepassword: "{{ lookup('env', 'ORACLE_PWD') }}"
 
   tasks:
+    - set_fact:
+        oraclehost: "{{ ORACLE_IP }}"
+      when: ORACLE_IP is defined
+    - set_fact:
+        oracleservice: "{{ ORACLE_SID }}"
+      when: ORACLE_SID is defined
+    - set_fact:
+        oraclepassword: "{{ ORACLE_PWD }}"
+      when: ORACLE_PWD is defined
     - debug:
         msg:
           - "{{ oraclehost }}"
